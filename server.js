@@ -25,7 +25,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, async () => {
     try {
         await sequelize.sync({ alter: true }); // ✅ Ensure tables are created
-        console.log(`✅ Server running on http://localhost:${PORT}`);
+        console.log(`✅ Server running on https://moviedatabaseapp-production.up.railway.app/`);
     } catch (error) {
         console.error("❌ Error syncing database:", error);
     }
