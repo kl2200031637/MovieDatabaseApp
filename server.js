@@ -4,6 +4,7 @@ const User = require("./src/models/User"); // Ensure models are loaded
 const authRoutes = require("./src/routes/authRoutes");
 const setupSwagger = require("./src/config/swagger");
 const profileRoutes = require("./src/routes/profileRoutes");
+const movieRoutes = require("./src/routes/movieRoutes");
 
 require("dotenv").config();
 
@@ -16,6 +17,7 @@ setupSwagger(app);
 // ✅ Register Routes
 app.use("/auth", authRoutes);
 app.use("/userprofile", profileRoutes);
+app.use("/movies", movieRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello");
