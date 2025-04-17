@@ -6,6 +6,13 @@ const router = express.Router();
 
 /**
  * @swagger
+ * tags:
+ *   name: Profiles
+ *   description: Profile management
+ */
+
+/**
+ * @swagger
  * /userprofile/create:
  *   post:
  *     summary: Create a new profile

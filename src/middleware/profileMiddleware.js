@@ -12,13 +12,14 @@ if (!fs.existsSync(uploadDir)) {
 
 // Storage configuration for uploaded files
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "uploads/profiles/"); // Files will be stored in 'uploads/profiles' folder
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/profiles'); // make sure this folder exists
     },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + path.extname(file.originalname);
+      cb(null, uniqueSuffix); // eg: 1744862404636.jpg
     }
-});
+  });
 
 // File filter to allow only images
 const fileFilter = (req, file, cb) => {
@@ -29,7 +30,7 @@ const fileFilter = (req, file, cb) => {
     if (extname && mimetype) {
         return cb(null, true);
     } else {
-        return cb(new Error("Only image files (JPEG, PNG, GIF) are allowed"), false);
+        return cb(new Error("Only image files (jpeg, jpg, png, gif) are allowed"), false);
     }
 };
 
